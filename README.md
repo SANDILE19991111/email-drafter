@@ -1,94 +1,132 @@
-# Email Drafter — ContentBot
-CAPACITI Week 2 AI Bootcamp Project
-
-Powered by Groq API (LLaMA 3.3 70B) + Node.js + Express. Runs independently — no Claude needed.
+# 📧 Email Drafter — ContentBot
+> CAPACITI Week 2 AI Bootcamp | Groq AI + Node.js + Express
 
 ---
 
-## File Structure
+## 🚀 Live Demo
 
-```
-email-drafter/
-├── server.js          <- Node.js backend (Express + Groq)
-├── package.json       <- Project config & dependencies
-├── .env.example       <- API key template
-├── .gitignore
-├── README.md
-└── public/
-    ├── index.html     <- Main page
-    ├── style.css      <- All styles
-    └── app.js         <- Frontend logic
-```
+👉 **https://email-drafter-ciay.onrender.com**
+
+> Open the link in any browser — no installation needed.
 
 ---
 
-## Run Locally (VS Code)
+## 📖 What This App Does
 
-### 1. Install Node.js
-Download from https://nodejs.org (LTS version)
+Email Drafter is an AI-powered web application that helps you write professional emails instantly. Instead of staring at a blank screen, you simply describe what you want to say and the AI writes a complete, polished email for you.
 
-### 2. Get FREE Groq API Key
-- Go to https://console.groq.com
-- Sign up → API Keys → Create API Key
-- Copy the key (starts with gsk_)
+### How it works:
+1. You select a **tone** (Professional, Friendly, Formal, Casual or Persuasive)
+2. You **describe** what the email should be about in a few words
+3. You click **Generate Email**
+4. The app sends your description to the **Groq AI API** (running LLaMA 3.3 70B)
+5. The AI writes a complete email with a subject line and full body
+6. You can **copy** the email and send it anywhere
 
-### 3. Open project in VS Code
-File → Open Folder → select email-drafter
+### Example use cases:
+- Following up after a job interview
+- Apologising to a client for a delay
+- Cold outreach to a business partner
+- Requesting a meeting with your manager
+- Writing a marketing or sales email
 
-### 4. Open terminal in VS Code (Ctrl + backtick)
+---
+
+## ⚙️ How the App is Built
+
+This app has two parts that work together:
+
+### Backend (server.js)
+- Built with **Node.js** and **Express**
+- Receives the user's email description from the frontend
+- Sends it to the **Groq API** with a system prompt that tells the AI to write emails only
+- Returns the generated email back to the frontend
+- Runs on port 3000 locally, or on Render when deployed
+
+### Frontend (public/)
+- Pure **HTML, CSS and JavaScript** — no frameworks
+- The user fills in the form and clicks Generate
+- JavaScript sends the request to the backend using fetch()
+- The response is displayed instantly on the page
+- Includes a copy-to-clipboard button
+
+### AI Model
+- Uses **LLaMA 3.3 70B** via the Groq API
+- Groq is free to use and extremely fast
+- The AI is given a strict system prompt so it only writes emails — nothing else
+- 
+- email-drafter/
+├── server.js          ← Backend: Express server + Groq API calls
+├── package.json       ← Node.js project config and dependencies
+├── .env.example       ← Template showing which environment variables are needed
+├── .gitignore         ← Tells Git to ignore node_modules and .env
+├── README.md          ← This file
+└── public/            ← Everything the browser loads
+├── index.html     ← The main page structure
+├── style.css      ← All styling and layout
+└── app.js         ← Frontend logic (fetch, display, copy)
+---
+
+## 🛠️ Run It Locally
+
+### Requirements
+- Node.js installed (https://nodejs.org)
+- A free Groq API key (https://console.groq.com)
+
+### Steps
 
 ```bash
+# 1. Clone the repo
+git clone https://github.com/SANDILE19991111/email-drafter.git
+cd email-drafter
+
+# 2. Install dependencies
 npm install
-```
 
-### 5. Create your .env file
-```bash
+# 3. Create your environment file
 copy .env.example .env
 ```
-Open .env and add your key:
-```
-GROQ_API_KEY=gsk_xxxxxxxxxxxxxxxx
-```
 
-### 6. Start the server
+Open `.env` and add your Groq key:
 ```bash
+# 4. Start the server
 npm start
 ```
 
-Open browser at: http://localhost:3000
+Open your browser at **http://localhost:3000**
 
 ---
 
-## Push to GitHub
+## 🌐 Deployment
 
-```bash
-git init
-git add .
-git commit -m "Week 2: Email Drafter"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/email-drafter.git
-git push -u origin main
-```
+This app is deployed on **Render** (free tier).
 
----
+- Render runs the Node.js server 24/7
+- The `GROQ_API_KEY` is stored securely as an environment variable on Render
+- Any push to the `main` branch on GitHub automatically redeploys the app
 
-## Deploy Live FREE on Render
-
-1. Go to https://render.com and sign up with GitHub
-2. New → Web Service → connect your repo
-3. Set these:
-   - Build Command:  npm install
-   - Start Command:  npm start
-4. Add Environment Variable:
-   - Key:   GROQ_API_KEY
-   - Value: gsk_xxxxxxxxxxxxxxxx
-5. Click Deploy
-6. Get your live URL: https://email-drafter-xxxx.onrender.com
+Live URL: **https://email-drafter-ciay.onrender.com**
 
 ---
 
-## Tech Stack
-- Backend:  Node.js + Express
-- Frontend: HTML + CSS + Vanilla JS
-- AI:       LLaMA 3.3 70B via Groq API
-- Deploy:   Render (free tier)
+## 🧰 Tech Stack
+
+| Layer | Technology |
+|---|---|
+| Backend | Node.js + Express |
+| Frontend | HTML + CSS + Vanilla JavaScript |
+| AI Model | LLaMA 3.3 70B |
+| AI Provider | Groq API (free) |
+| Deployment | Render (free tier) |
+| Version Control | GitHub |
+
+---
+
+## 👤 Author
+
+**Sandile** — CAPACITI AI Bootcamp 2026
+GitHub: https://github.com/SANDILE19991111
+
+---
+
+## 🗂️ File Structure
